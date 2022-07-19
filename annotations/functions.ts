@@ -27,3 +27,28 @@ const throwError = (message: string): string => {
   }
   return message;
 };
+
+const forecast = {
+  date: new Date(),
+  weather: 'sunny'
+};
+
+const logWeather = (forecast: { date: Date, weather: string}): void => {
+  console.log(forecast.date);
+  console.log(forecast.weather);
+};
+
+// Desestruturação alla ES1015
+const logWeather = ({ date, weather }) => {
+  console.log(date);
+  console.log(weather)
+};
+
+// Alla typescript substituir variável pela declaração desestruturada):
+// Note que a desestruturação e os parâmetros são partes separadas.
+const logWeather = ({date, weather}: { date: Date, weather: string}): void => {
+  console.log(date);
+  console.log(weather);
+};
+
+logWeather(todaysWeather)
