@@ -1,4 +1,3 @@
-// Construção da classe;
 class Vehicle {
   drive(): void {
     console.log('vrum vrum');
@@ -9,7 +8,15 @@ class Vehicle {
   }
 }
 
-// Instância da classe:
-const vehicle = new Vehicle();
-vehicle.drive();
-vehicle.honk();
+// Classe que herda tudo da classe pai:
+class Car extends Vehicle {
+  // Override no método drive (substitui o da classe pai):
+  drive(): void {
+    console.log('vuruuuuuuuum!')
+  }
+}
+
+// Instância da 2ª classe:
+const car = new Car();
+car.drive();
+car.honk();
