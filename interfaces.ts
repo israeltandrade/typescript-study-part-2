@@ -1,10 +1,5 @@
-// Podemos passar tipos complexos e funções em uma interface:
-interface Vehicle {
-  name: string;
-  year: Date;
-  broken: boolean;
-  // Agora a interface obriga a colocação de uma função com
-  // retorno string nos objetos à ela associados:
+// Agora a interface exige menos coisas:
+interface Reportable {
   summary(): string;
 }
 
@@ -19,9 +14,9 @@ const oldCivic = {
 };
 
 
-const printVehicle = (vehicle: Vehicle): void => {
-  console.log(vehicle.summary());
+const printSummary = (item: Reportable): void => {
+  console.log(item.summary());
 };
 
 // O objeto "oldCivic" é passado como parâmetro da função:
-printVehicle(oldCivic);
+printSummary(oldCivic);
