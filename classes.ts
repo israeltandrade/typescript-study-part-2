@@ -1,22 +1,21 @@
 class Vehicle {
-  drive(): void {
-    console.log('vrum vrum');
-  }
-
-  honk(): void {
+  // Método protegido só pode ser acessado pela classe e classes herdeiras:
+  protected honk(): void {
     console.log('bee beeeep!')
   }
 }
 
-// Classe que herda tudo da classe pai:
 class Car extends Vehicle {
-  // Override no método drive (substitui o da classe pai):
-  drive(): void {
+  // Método privado:
+  private drive(): void {
     console.log('vuruuuuuuuum!')
+  }
+
+  public startDrivingProcess(): void {
+    this.drive();
+    this.honk();
   }
 }
 
-// Instância da 2ª classe:
 const car = new Car();
-car.drive();
-car.honk();
+car.startDrivingProcess();
