@@ -1,14 +1,9 @@
 class Vehicle {
-  // Campos ou propriedades (sem construtor, é bom inicializar):
-  // color: string = 'red';
   color: string;
 
   constructor(color: string) {
     this.color = color;
   }
-
-  // A forma a seguir dispensa a definição da propriedade no começo do arquivo:
-  // constructor(public color: string) {}
 
   protected honk(): void {
     console.log('bee beeeep!')
@@ -18,8 +13,16 @@ class Vehicle {
 const vehicle = new Vehicle('orange');
 console.log(vehicle.color);
 
+// Enquanto o construtor da classe carro não existir, será invocado o
+// construtor da classe pai (Vehicle).
 class Car extends Vehicle {
-  // Método privado:
+  // Construtor não especifíca modificador de parâmetro para color, para que
+  // ele possa se referir à classe pai.
+  constructor(public wheels: number, color: string) {
+    // A chamada super foi exigida para construtor em classe derivada:
+    super(color);
+  }
+  
   private drive(): void {
     console.log('vuruuuuuuuum!');
   }
@@ -35,5 +38,6 @@ class Car extends Vehicle {
   }
 }
 
-const car = new Car('azul');
+// Agora dois argumentos devem ser passados ao construtor de Car:
+const car = new Car(4, 'azul');
 car.startDrivingProcess();
