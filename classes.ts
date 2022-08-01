@@ -1,15 +1,21 @@
-// Construção da classe;
 class Vehicle {
-  drive(): void {
-    console.log('vrum vrum');
-  }
-
-  honk(): void {
+  // Método protegido só pode ser acessado pela classe e classes herdeiras:
+  protected honk(): void {
     console.log('bee beeeep!')
   }
 }
 
-// Instância da classe:
-const vehicle = new Vehicle();
-vehicle.drive();
-vehicle.honk();
+class Car extends Vehicle {
+  // Método privado:
+  private drive(): void {
+    console.log('vuruuuuuuuum!')
+  }
+
+  public startDrivingProcess(): void {
+    this.drive();
+    this.honk();
+  }
+}
+
+const car = new Car();
+car.startDrivingProcess();
